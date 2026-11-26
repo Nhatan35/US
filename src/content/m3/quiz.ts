@@ -1,0 +1,70 @@
+import type { QuizData } from '@/types/course';
+
+export const M3_QUIZ: QuizData = {
+  id: 'quiz-m3',
+  moduleId: 'm3',
+  title: 'Kiểm tra Module 3: Viết User Story hiệu quả',
+  description: 'Đánh giá kỹ năng áp dụng INVEST, viết AC/Gherkin, phân biệt DoR/DoD và chia nhỏ story theo SPIDR. Đạt ≥ 80% để hoàn thành.',
+  passScore: 80,
+  xpReward: 40,
+  questions: [
+    {
+      id: 'qm3-1',
+      type: 'single',
+      prompt: 'Một story được ước lượng 21 điểm và chứa 3 chữ "và" trong phần "Tôi muốn". Tiêu chí INVEST nào bị vi phạm rõ nhất?',
+      options: ['Testable', 'Small & Independent', 'Estimable', 'Negotiable'],
+      answer: 1,
+      explain: 'Story quá lớn (21 điểm) và gộp nhiều mục tiêu cùng lúc vi phạm tiêu chí Small và có thể tách độc lập.',
+      skill: 'splitting',
+    },
+    {
+      id: 'qm3-2',
+      type: 'truefalse',
+      prompt: 'Đúng hay Sai: Khi dùng Scenario Outline trong Gherkin, bắt buộc phải đi kèm bảng Examples với tên cột khớp các biến <...>.',
+      answer: true,
+      explain: 'Đúng. Scenario Outline chạy lặp qua từng dòng dữ liệu trong bảng Examples.',
+      skill: 'ac',
+    },
+    {
+      id: 'qm3-3',
+      type: 'multi',
+      prompt: 'Chọn TẤT CẢ các cách chia Epic "Đặt lịch khám" theo LÁT CẮT DỌC (Vertical Slice):',
+      options: [
+        'Story 1: Đặt lịch khám thường · Story 2: Đặt lịch khám Bảo hiểm Y tế',
+        'Story 1: Làm giao diện lịch · Story 2: Viết API lịch · Story 3: Tạo bảng DB',
+        'Story 1: Đặt lịch cơ bản · Story 2: Áp quy tắc giới hạn hủy dưới 2 giờ',
+        'Story 1: Đặt lịch cho bản thân · Story 2: Đặt lịch hộ cho người thân',
+      ],
+      answer: [0, 2, 3],
+      explain: 'Các phương án 1, 3, 4 chia theo Data/Rules/Paths để mỗi story đều mang giá trị người dùng. Phương án 2 là cắt ngang theo tầng kỹ thuật.',
+      skill: 'splitting',
+    },
+    {
+      id: 'qm3-4',
+      type: 'match',
+      prompt: 'Ghép mỗi khái niệm với ví dụ phù hợp nhất:',
+      pairs: [
+        ['Definition of Ready (DoR)', 'Story đã có AC và được ước lượng ≤ 8 điểm trước Sprint Planning'],
+        ['Acceptance Criteria (AC)', 'Hiển thị thông báo "Khung giờ đã hết" nếu slot vừa bị đặt'],
+        ['Definition of Done (DoD)', 'Đã qua code review, pass automated test và deploy staging'],
+        ['Spike', 'Dành 1 ngày thử nghiệm kết nối API hệ thống HIS cũ'],
+      ],
+      explain: 'Phân biệt rạch ròi DoR, AC, DoD và Spike giúp quy trình làm việc của team minh bạch.',
+      skill: 'ac',
+    },
+    {
+      id: 'qm3-5',
+      type: 'highlight',
+      prompt: 'Bấm chọn các cụm từ làm vi phạm tính Testable và Negotiable trong AC sau:',
+      segments: [
+        { text: 'Khi bệnh nhân nhập số điện thoại sai, ' },
+        { text: 'popup màu đỏ bo góc 8px', isTarget: true },
+        { text: ' hiện ra ' },
+        { text: 'thật nhanh và thân thiện', isTarget: true },
+        { text: ' báo số điện thoại không hợp lệ.' },
+      ],
+      explain: '"Popup màu đỏ bo góc 8px" là chi tiết UI quá cứng; "thật nhanh và thân thiện" là từ mơ hồ không kiểm thử được.',
+      skill: 'ac',
+    },
+  ],
+};
